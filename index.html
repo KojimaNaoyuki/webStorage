@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>web storageの利用</h1>
+
+    <script>
+        /*
+        ローカルストレージ、セッションストレージがある
+
+        -- ローカルストレージ --
+        ・ウィンドウやタブをまたいでデータの受け渡しが可能
+        ・ブラウザを閉じてもデータが残る
+
+        -- セッションストレージ --
+        ・現在のブラウザが開かれている間データが保存される
+        ・ブラウザが閉じたらデータは破棄される
+        ・ウィンドウやタブをまたいでのデータ受け渡しはできない
+        */
+
+        (function() {
+            //ローカルストレージ
+            const storage = localStorage; //ストレージを定義
+    
+            //値の設定
+            storage.setItem('key1', 'value1');
+            storage.key2 = 'value2';
+            storage['key3'] = 'value3';
+    
+            //値の読み込み
+            console.log(storage.getItem('key1'));
+            console.log(storage.key2);
+            console.log(storage['key3']);
+    
+            //データの削除
+            storage.removeItem('key1');
+            delete storage.key2;
+            delete storage['key3'];
+            storage.clear(); //全てのデータを削除
+        }).call(this);
+
+        /////////////////////////////////////////////////////////////
+
+        (function() {
+            //セッションストレージ
+            const storage = sessionStorage; //ストレージを定義
+    
+            //値の設定
+            storage.setItem('key1', 'value1');
+            storage.key2 = 'value2';
+            storage['key3'] = 'value3';
+    
+            //値の読み込み
+            console.log(storage.getItem('key1'));
+            console.log(storage.key2);
+            console.log(storage['key3']);
+
+            //データの削除
+            storage.removeItem('key1');
+            delete storage.key2;
+            delete storage['key3'];
+            storage.clear(); //全てのデータを削除
+        }).call(this);
+
+        /////////////////////////////////////////////////////////////
+
+        (function() {
+            //ストレージが存在するか確かめる
+            const storage = localStorage; //ストレージを定義
+            
+            storage.setItem('key', 'value');
+
+            if(localStorage.getItem('key')) {
+                console.log('ローカルストレージ(key)が存在します');
+            } else {
+                console.log('ローカルストレージ(key)が存在しません');
+            }
+
+            if(localStorage.getItem('key2')) {
+                console.log('ローカルストレージ(key2)が存在します');
+            } else {
+                console.log('ローカルストレージ(key2)が存在しません');
+            }
+
+            storage.clear();
+        }).call(this);
+
+
+    </script>
+</body>
+</html>
